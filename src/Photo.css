@@ -1,0 +1,40 @@
+.photo {
+  border: 1px dotted green;
+  border-radius: 8%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  overflow: hidden;
+}
+
+.photo__img {
+  position: absolute;
+  margin: auto;
+  min-height: 100%;
+  min-width: 100%;
+  left: -100%;
+  right: -100%;
+  top: -100%;
+  bottom: -100%;
+}
+
+.photo__score {
+  position: absolute;
+  margin-left: 4%;
+  z-index: 1;
+}
+
+.photo__score::before {
+  font-family: fontawesome;
+  font-size: 20px;
+}
+
+.photo__score--up::before {
+  content: "\f164";
+}
+
+.photo__score--down::before {
+  content: "\f165";
+}
