@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>vims-odc</title>
+    <link rel="stylesheet" href="reset.css">
+    <style>
+      .app {
+        padding: 50px;
+        height: 100%;
+      }
+      .app__header {
+        border: 1px dotted blue;
+      }
+      .app__main {
+
+      }
+
+      .photo-grid {
+        display: flex;
+        flex-wrap: wrap;
+        border: 1px dotted blue;
+      }
+
+      .photo-grid__item {
+        width: 30%;
+        margin-right: 3.3%;
+        margin-bottom: 20px;
+      }
+      .photo-grid__item:after {
+        content: "";
+        display: block;
+        padding-bottom: 100%;
+      }
+
+      .photo {
+        border: 1px dotted green;
+        border-radius: 8%;
+        height: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="app">
+      <div class="app__header">
+        <div class="header">
+          <ul>
+            <li>
+              <label>
+                <input type="checkbox"> photo 1
+              </label>
+            </li>
+            <li>
+              <label>
+                <input type="checkbox"> photo 2
+              </label>
+            </li>
+            <li>
+                <label>
+                  <input type="checkbox"> photo 3
+                </label>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="app__main">
+        <div class="photo-grid">
+          <div class="photo-grid__item">
+            <div class="photo">
+              <div class="photo__score">
+              </div>
+              <div class="photo__img">
+                photo 1
+              </div>
+            </div>
+          </div>
+
+          <div class="photo-grid__item">
+            <div class="photo">
+              <div class="photo__score">
+              </div>
+              <div class="photo__img">
+                photo 1
+              </div>
+            </div>
+          </div>
+
+          <div class="photo-grid__item">
+            <div class="photo">
+              <div class="photo__score">
+              </div>
+              <div class="photo__img">
+                photo 1
+              </div>
+            </div>
+          </div>
+
+          <div class="photo-grid__item">
+            <div class="photo">
+              <div class="photo__score">
+              </div>
+              <div class="photo__img">
+                photo 1
+              </div>
+            </div>
+          </div>
+
+          <div class="photo-grid__item">
+            <div class="photo">
+              <div class="photo__score">
+              </div>
+              <div class="photo__img">
+                photo 1
+              </div>
+            </div>
+          </div>
+
+          <div class="photo-grid__item">
+            <div class="photo">
+              <div class="photo__score">
+              </div>
+              <div class="photo__img">
+                photo 1
+              </div>
+            </div>
+          </div>
+
+          <div class="photo-grid__item">
+            <div class="photo">
+              <div class="photo__score">
+              </div>
+              <div class="photo__img">
+                photo 1
+              </div>
+            </div>
+          </div>
+
+          <div class="photo-grid__item">
+            <div class="photo">
+              <div class="photo__score">
+              </div>
+              <div class="photo__img">
+                photo 1
+              </div>
+            </div>
+          </div>
+
+          <div class="photo-grid__item">
+            <div class="photo">
+              <div class="photo__score">
+              </div>
+              <div class="photo__img">
+                photo 1
+              </div>
+            </div>
+          </div>
+
+          <div class="photo-grid__item">
+            <div class="photo">
+              <div class="photo__score">
+              </div>
+              <div class="photo__img">
+                photo 1
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </body>
+</html>
