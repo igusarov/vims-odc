@@ -34,6 +34,16 @@ body {
 ol, ul {
     list-style: none;
 }
+li {
+    display: inline;
+}
+
+label input[type=checkbox]{
+    position: relative;
+    vertical-align: middle;
+    bottom: 1px;
+}
+
 blockquote, q {
     quotes: none;
 }
