@@ -10,6 +10,10 @@ class App extends Component {
     return photo.selected;
   }
 
+  ascId(photoA, photoB) {
+    return photoA.id > photoB.id;
+  }
+
   descScore(photoA, photoB) {
     return photoA.score < photoB.score;
   }
@@ -21,7 +25,7 @@ class App extends Component {
           <Header/>
         </div>
         <div className="app__main">
-          <PhotoGrid photos={this.props.photos.filter(this.selected).sort(this.descScore)}/>
+          <PhotoGrid photos={this.props.photos.filter(this.selected).sort(this.ascId).sort(this.descScore)}/>
         </div>
       </div>
     );

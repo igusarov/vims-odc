@@ -3,6 +3,7 @@ import './Photo.css';
 import * as actions from './actions';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import classNames from 'classnames';
 
 class Photo extends Component {
 
@@ -16,14 +17,22 @@ class Photo extends Component {
   }
 
   render() {
+    let photoScoreClassNames = classNames({
+      'photo__score': true,
+      'photo__score--down': this.props.photo.score < 0,
+      'photo__score--up': this.props.photo.score >= 0,
+    });
+
     return (
       <div className="photo"
            onClick={this.onLeftClick.bind(this)}
            onContextMenu={this.onRightClick.bind(this)}>
-        <div className="photo__score photo__score--down">
+        <div className={photoScoreClassNames}>
           {this.props.photo.score}
         </div>
-        <img src="1.jpg" alt="" className="photo__img"/>
+        <img src={this.props.photo.src}
+             alt={this.props.photo.title}
+             className="photo__img"/>
       </div>
     );
   }

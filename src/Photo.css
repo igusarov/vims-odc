@@ -31,8 +31,16 @@
   font-size: 20px;
 }
 
+.photo__score--up {
+  color: blue;
+}
+
 .photo__score--up::before {
   content: "\f164";
+}
+
+.photo__score--down {
+  color: brown;
 }
 
 .photo__score--down::before {

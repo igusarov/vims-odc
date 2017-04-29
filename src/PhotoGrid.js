@@ -64,9 +64,11 @@ class PhotoGrid extends Component {
     requestAnimationFrame(function () {
       domNode.style.transition = 'transform 0s';
       domNode.style.transform = 'translate(' + dX + 'px, ' + dY + 'px)';
+      domNode.style.zIndex = '1000';
       requestAnimationFrame(function () {
         domNode.style.transform = '';
         domNode.style.transition = 'transform 400ms';
+        domNode.style.zIndex = '0';
       })
     });
   }
