@@ -34,9 +34,6 @@ body {
 ol, ul {
   list-style: none;
 }
-li {
-  display: inline;
-}
 
 label input[type=checkbox]{
   position: relative;
@@ -74,8 +71,12 @@ html {
   box-sizing: inherit;
 }
 
+li {
+  display: inline;
+}
+
 @font-face {
   font-family: fontawesome;
-  src: url(fontawesome-webfont.woff);
+  src: url(../public/fonts/fontawesome-webfont.woff);
   font-weight: bold;
 }
