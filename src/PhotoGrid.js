@@ -11,33 +11,26 @@ class PhotoGrid extends Component {
   }
 
   componentWillReceiveProps() {
-    var component = this;
-
     if (this.props.photos.length > 0) {
-      var newState = this.props.photos.reduce(function (state, child) {
-        if (!child.id) return state;
-        var currentState = component.state;
-        var domNode = ReactDOM.findDOMNode(component.refs[child.id]);
-        var boundingBox = domNode.getBoundingClientRect();
+      let newState = this.props.photos.reduce((state, photo) => {
+        let domNode = ReactDOM.findDOMNode(this.refs[photo.id]);
+        let boundingBox = domNode.getBoundingClientRect();
 
-        currentState[child.id] = boundingBox;
-        //currentState.photos = component.props.photos;
+        state[photo.id] = boundingBox;
 
-        return currentState;
-      });
+        return state;
+      }, {});
 
       this.setState(newState);
     }
   }
 
   componentDidUpdate(previousProps) {
-    if (!this.state) return;
+    let doNeedAnimation = [];
+    let photoIds = this.props.photos.map((photo) => photo.id);
 
-    var component = this;
-    var doNeedAnimation = [];
-
-    previousProps.photos.forEach(function (photo) {
-      if (component.doesNeedAnimation(photo) === 0) {
+    previousProps.photos.forEach((photo) => {
+      if (photoIds.includes(photo.id) && this.doesNeedAnimation(photo)) {
         doNeedAnimation.push(photo);
       }
     });
@@ -45,23 +38,12 @@ class PhotoGrid extends Component {
     doNeedAnimation.forEach(this.animateAndTransform.bind(this));
   }
 
-  /*animateAndDestroy(child, n) {
-    var domNode = ReactDOM.findDOMNode(this.refs[child.key]);
+  animateAndTransform(photo) {
+    let domNode = ReactDOM.findDOMNode(this.refs[photo.id]);
 
-    requestAnimaytionFrame(function () {
-      requestAnimationFrame(function () {
-        domNode.style.opacity = "0";
-        domNode.style.transform = "scale(2)"
-      });
-    });
-  }*/
+    let [dX, dY] = this.getPositionDelta(domNode, photo.id);
 
-  animateAndTransform(child, n) {
-    var domNode = ReactDOM.findDOMNode(this.refs[child.id]);
-
-    var [dX, dY] = this.getPositionDelta(domNode, child.id);
-
-    requestAnimationFrame(function () {
+    requestAnimationFrame(() => {
       domNode.style.transition = 'transform 0s';
       domNode.style.transform = 'translate(' + dX + 'px, ' + dY + 'px)';
       domNode.style.zIndex = '1000';
@@ -73,24 +55,17 @@ class PhotoGrid extends Component {
     });
   }
 
-  doesNeedAnimation(child) {
-    var isNotMovable = !child.id;
-    var isNew = !this.state[child.id];
-    var isDestroyed = !this.refs[child.id];
+  doesNeedAnimation(photo) {
+    let domNode = ReactDOM.findDOMNode(this.refs[photo.id]);
+    let [dX, dY] = this.getPositionDelta(domNode, photo.id);
+    let isStationary = dX === 0 && dY === 0;
 
-    if (isDestroyed) return 2;
-    if (isNotMovable || isNew) return;
-
-    var domNode = ReactDOM.findDOMNode(this.refs[child.id]);
-    var [dX, dY] = this.getPositionDelta(domNode, child.id);
-    var isStationary = dX === 0 && dY === 0;
-
-    return (isStationary === true) ? 1 : 0;
+    return !isStationary;
   }
 
   getPositionDelta(domNode, id) {
-    var newBox = domNode.getBoundingClientRect();
-    var oldBox = this.state[id];
+    let newBox = domNode.getBoundingClientRect();
+    let oldBox = this.state[id];
 
     return [
       oldBox.left - newBox.left,
@@ -102,9 +77,9 @@ class PhotoGrid extends Component {
     return (
       <div className="photo-grid">
         {this.props.photos.map((photo) => (
-        <div className="photo-grid__item" ref={photo.id} key={photo.id}>
-          <Photo photo={photo}/>
-        </div>
+          <div className="photo-grid__item" ref={photo.id} key={photo.id}>
+            <Photo photo={photo}/>
+          </div>
         ))}
       </div>
     );
