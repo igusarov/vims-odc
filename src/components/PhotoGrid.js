@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import './PhotoGrid.css';
-import Photo from './Photo';import _ from 'lodash';
+import PhotoContainer from '../containers/PhotoContainer';
+import _ from 'lodash';
 import ReactDOM from 'react-dom';
 
 
@@ -79,7 +80,7 @@ class PhotoGrid extends Component {
       <div className="photo-grid">
         {this.props.photos.map((photo) => (
           <div className="photo-grid__item" ref={photo.id} key={photo.id}>
-            <Photo photo={photo}/>
+            <PhotoContainer photo={photo}/>
           </div>
         ))}
       </div>

@@ -1,19 +1,16 @@
 import React, {Component} from 'react';
 import './Photo.css';
-import * as actions from '../actions';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
 import classNames from 'classnames';
 
 class Photo extends Component {
 
   onLeftClick() {
-    this.props.actions.increasePhotoScore(this.props.photo);
+    this.props.onLeftClick(this.props.photo);
   }
 
   onRightClick(e) {
     e.preventDefault();
-    this.props.actions.decreasePhotoScore(this.props.photo);
+    this.props.onRightClick(this.props.photo);
   }
 
   render() {
@@ -38,8 +35,4 @@ class Photo extends Component {
   }
 }
 
-const mapDispatchToProps = dispatch => ({
-  actions: bindActionCreators(actions, dispatch)
-});
-
-export default connect(()=>({}),mapDispatchToProps)(Photo);
+export default Photo;
