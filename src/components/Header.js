@@ -5,15 +5,8 @@ import { bindActionCreators } from 'redux';
 
 class Header extends Component {
 
-  constructor() {
-    super();
-    this.state = {
-      items: [1,2,3,4,5,6,7,8,9]
-    };
-  }
-
   ascId(photoA, photoB) {
-    return photoA.id > photoB.id;
+    return photoA.id > photoB.id ? 1 : -1;
   }
 
   onChangePhoto(photo) {

@@ -1,7 +1,6 @@
 .photo-grid {
   display: flex;
   flex-wrap: wrap;
-  border: 1px dotted blue;
 }
 
 .photo-grid__item {

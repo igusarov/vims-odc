@@ -1,9 +1,8 @@
 .app {
-  padding: 50px;
+  padding: 50px 25%;
   height: 100%;
 }
 
 .app__header {
-  border: 1px dotted blue;
   margin-bottom: 30px;
 }

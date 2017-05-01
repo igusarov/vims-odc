@@ -11,11 +11,11 @@ class App extends Component {
   }
 
   ascId(photoA, photoB) {
-    return photoA.id > photoB.id;
+    return photoA.id > photoB.id ? 1 : -1;
   }
 
   descScore(photoA, photoB) {
-    return photoA.score < photoB.score;
+    return photoA.score < photoB.score ? 1 : -1;
   }
 
   render() {

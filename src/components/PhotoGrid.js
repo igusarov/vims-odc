@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import './PhotoGrid.css';
-import Photo from './Photo';
+import Photo from './Photo';import _ from 'lodash';
 import ReactDOM from 'react-dom';
+
 
 class PhotoGrid extends Component {
 
@@ -30,7 +31,7 @@ class PhotoGrid extends Component {
     let photoIds = this.props.photos.map((photo) => photo.id);
 
     previousProps.photos.forEach((photo) => {
-      if (photoIds.includes(photo.id) && this.doesNeedAnimation(photo)) {
+      if (_(photoIds).includes(photo.id) && this.doesNeedAnimation(photo)) {
         doNeedAnimation.push(photo);
       }
     });
@@ -46,7 +47,7 @@ class PhotoGrid extends Component {
     requestAnimationFrame(() => {
       domNode.style.transition = 'transform 0s';
       domNode.style.transform = 'translate(' + dX + 'px, ' + dY + 'px)';
-      domNode.style.zIndex = '1000';
+      domNode.style.zIndex = '1';
       requestAnimationFrame(function () {
         domNode.style.transform = '';
         domNode.style.transition = 'transform 400ms';
